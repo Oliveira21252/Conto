@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark light">
+<title>O Encanto do Ângulo</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141210'/%3E%3Crect x='10.5' y='10.5' width='11' height='11' transform='rotate(45 16 16)' fill='%23C9A84C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#141210; --gold:#c9a84c; --gold-b:#e6cd85; --gold-d:#8a6a1e;
+  --ivory:#f6f1e4; --ink:#201822; --ink-d:#1d1820; --soft:#8f8577;
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --caps:'Cinzel',Georgia,'Times New Roman',serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased}
+::selection{background:rgba(201,168,76,.35)}
+svg{display:block}
+a{color:inherit}
+
+.progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:70;background:linear-gradient(90deg,var(--gold-d),var(--gold-b));box-shadow:0 0 8px rgba(201,168,76,.5)}
+
+#nav{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:16px 30px;border-bottom:1px solid transparent;transition:background .45s ease,padding .45s ease,border-color .45s ease}
+#nav.solid{background:rgba(16,14,12,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom-color:rgba(201,168,76,.28);padding:11px 30px}
+.brand{font-family:var(--caps);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);text-decoration:none;white-space:nowrap}
+.links{display:flex;align-items:center}
+.links a{font-family:var(--caps);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(246,241,228,.68);text-decoration:none;margin-left:24px;padding:4px 2px;transition:color .3s}
+.links a:hover,.links a.active{color:var(--gold-b)}
+
+/* ---- capa ---- */
+.cover{min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;position:relative;padding:90px 26px;background:radial-gradient(1100px 640px at 50% 26%,#252018 0%,var(--bg) 64%)}
+.frame{position:relative;max-width:880px;width:100%;text-align:center;color:#f3ecdc;padding:74px 46px 66px;border-top:3px solid var(--gold);border-bottom:3px solid var(--gold)}
+.frame::before,.frame::after{content:"";position:absolute;left:0;right:0;height:1px;background:rgba(201,168,76,.45)}
+.frame::before{top:9px}
+.frame::after{bottom:9px}
+.label{font-family:var(--caps);font-size:12.5px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin:0 0 30px;text-indent:.5em}
+.cover h1{font-family:var(--caps);font-weight:600;font-size:clamp(42px,7vw,78px);line-height:1.1;letter-spacing:.05em;margin:0 0 18px;color:#f6efdd;text-wrap:balance}
+.sub{font-style:italic;font-weight:500;font-size:clamp(19px,2.6vw,26px);color:rgba(230,205,133,.92);margin:0 0 34px}
+.orn{color:var(--gold);margin:0 auto 34px}
+.meta{font-family:var(--caps);font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;color:rgba(240,232,214,.6);margin:0;line-height:2.1}
+.cue{position:absolute;bottom:28px;left:50%;width:1px;height:58px;transform:translateX(-50%);background:linear-gradient(180deg,var(--gold),transparent);animation:cue 2.8s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.2}50%{opacity:.9}}
+
+/* ---- seções escuras ---- */
+[id]{scroll-margin-top:88px}
+#audicao{padding:120px 26px 110px;background:linear-gradient(180deg,var(--bg) 0%,#171411 100%)}
+.center{max-width:760px;margin:0 auto;text-align:center}
+.overline{font-family:var(--caps);font-size:11px;letter-spacing:.44em;text-transform:uppercase;color:var(--gold);margin:0 0 14px;text-indent:.44em}
+.dark-title{font-family:var(--caps);font-weight:600;font-size:clamp(26px,3.4vw,36px);letter-spacing:.1em;color:#f1ead9;margin:0 0 12px}
+.note{font-style:italic;font-size:18px;color:rgba(230,205,133,.75);margin:0}
+
+/* ---- player ---- */
+.player{margin:46px auto 0;max-width:640px;display:flex;align-items:center;gap:24px;background:linear-gradient(180deg,#1c1916,#151210);border:1px solid rgba(201,168,76,.32);padding:26px 30px;box-shadow:0 34px 70px -34px rgba(0,0,0,.85)}
+.pp{flex:none;width:64px;height:64px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--gold-b);cursor:pointer;display:grid;place-items:center;transition:background .35s,color .35s,transform .2s;padding:0}
+.pp:hover{background:var(--gold);color:#161310}
+.pp:active{transform:scale(.96)}
+.pp svg{width:22px;height:22px;fill:currentColor}
+.mid{flex:1;min-width:0}
+.eq{display:flex;gap:3px;align-items:flex-end;height:16px;margin:0 0 12px;opacity:.35;transition:opacity .4s}
+.eq i{width:2px;height:100%;background:var(--gold);transform:scaleY(.3);transform-origin:bottom}
+.player.playing .eq{opacity:1}
+.player.playing .eq i{animation:eq 1s ease-in-out infinite}
+.player.playing .eq i:nth-child(2){animation-delay:.18s;animation-duration:.9s}
+.player.playing .eq i:nth-child(3){animation-delay:.36s;animation-duration:1.2s}
+.player.playing .eq i:nth-child(4){animation-delay:.09s;animation-duration:.8s}
+.player.playing .eq i:nth-child(5){animation-delay:.27s;animation-duration:1.05s}
+@keyframes eq{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
+.track{position:relative;height:28px;cursor:pointer;touch-action:none}
+.rail{position:absolute;top:50%;left:0;right:0;height:2px;transform:translateY(-50%);background:rgba(201,168,76,.22)}
+.fill{position:absolute;top:50%;left:0;height:2px;transform:translateY(-50%);width:0;background:linear-gradient(90deg,var(--gold-d),var(--gold-b))}
+.knob{position:absolute;right:-6px;top:50%;width:11px;height:11px;border-radius:50%;transform:translateY(-50%);background:var(--gold-b);box-shadow:0 0 12px rgba(230,205,133,.65)}
+.time{flex:none;font-variant-numeric:tabular-nums;font-size:16px;color:rgba(246,241,228,.62);letter-spacing:.05em;min-width:104px;text-align:right}
+.tsep{opacity:.5}
+.hint{margin:26px 0 0;font-style:italic;font-size:15px;color:rgba(240,232,214,.4)}
+
+/* ---- papel ---- */
+#conto{background:var(--ivory);border-top:1px solid rgba(201,168,76,.5);padding:110px 26px 120px}
+.paper-inner{max-width:680px;margin:0 auto}
+.front-epi{text-align:center;margin:6px 0 100px}
+.epi-q{font-style:italic;font-weight:500;color:var(--gold-d);font-size:clamp(22px,3vw,29px);margin:0 0 12px}
+.epi-a{color:var(--soft);font-size:16px;letter-spacing:.1em;margin:0}
+.scene{margin:0 0 104px}
+.scene:last-child{margin-bottom:30px}
+.scene-head{margin-bottom:36px}
+.scene-num{font-family:var(--caps);font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-d);margin:0 0 12px;text-indent:.4em}
+.scene-title{font-weight:600;font-size:clamp(28px,4vw,38px);line-height:1.15;color:var(--ink-d);margin:0;letter-spacing:.01em}
+.rule{width:58px;height:2px;background:var(--gold);margin-top:20px}
+p.body{font-size:20px;line-height:1.8;color:var(--ink);text-align:justify;hyphens:auto;-webkit-hyphens:auto;margin:0 0 1.15em}
+p.body.indent{text-indent:1.7em}
+.dc{float:left;font-family:var(--caps);font-weight:600;color:var(--gold-d);font-size:3.15em;line-height:.82;padding:.06em .14em 0 0}
+.charada{background:#efe8d3;border-left:2px solid var(--gold);padding:26px 30px;margin:36px 0 40px}
+.char-line{font-style:italic;color:#4a3a26;font-size:19px;line-height:1.65;margin:0 0 8px;text-align:left}
+.char-line:last-child{margin-bottom:0}
+.char-sig{margin-top:14px}
+
+/* ---- fim ---- */
+#fim{padding:120px 26px 96px;text-align:center;background:radial-gradient(900px 480px at 50% 30%,#1d1915 0%,var(--bg) 70%);border-top:1px solid rgba(201,168,76,.22)}
+.fim-word{font-family:var(--caps);font-size:20px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin:30px 0 34px;text-indent:.5em}
+.fim-meta p{font-family:var(--caps);font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(240,232,214,.55);margin:0 0 10px}
+.fim-foot{color:#6d757d;margin-top:22px}
+
+/* ---- reveal ---- */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .85s ease,transform .85s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .cue,.player.playing .eq i{animation:none!important}
+}
+
+/* ---- responsivo ---- */
+@media (max-width:700px){
+  #nav{padding:12px 18px}
+  .brand{font-size:10px;letter-spacing:.2em}
+  .links a{margin-left:14px;font-size:10px;letter-spacing:.18em}
+  .links a.wide{display:none}
+  .frame{padding:56px 24px 50px}
+  p.body{font-size:18px}
+  .time{min-width:88px;font-size:14px}
+}
+@media (max-width:540px){
+  .player{flex-direction:column;gap:18px;padding:24px 22px;align-items:stretch}
+  .pp{margin:0 auto}
+  .time{text-align:center;min-width:0}
+  .meta{letter-spacing:.2em;font-size:10.5px}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<nav id="nav">
+  <a class="brand" href="#capa">O Encanto do Ângulo</a>
+  <div class="links">
+    <a href="#capa" class="wide">Capa</a>
+    <a href="#audicao" class="wide">Audição</a>
+    <a href="#cena-1">I</a>
+    <a href="#cena-2">II</a>
+    <a href="#cena-3">III</a>
+    <a href="#cena-4">IV</a>
+    <a href="#cena-5">V</a>
+  </div>
+</nav>
+
+<header id="capa" class="cover">
+  <div class="frame">
+    <p class="label">Um conto erótico</p>
+    <h1>O Encanto<br>do Ângulo</h1>
+    <p class="sub">Um jogo em três estágios</p>
+    <svg class="orn" width="220" height="12" viewBox="0 0 220 12" aria-hidden="true">
+      <line x1="0" y1="6" x2="94" y2="6" stroke="currentColor" stroke-width="1" opacity=".7"/>
+      <rect x="104" y="0" width="12" height="12" transform="rotate(45 110 6)" fill="currentColor"/>
+      <line x1="126" y1="6" x2="220" y2="6" stroke="currentColor" stroke-width="1" opacity=".7"/>
+    </svg>
+    <p class="meta">Amanda &amp; Thiago &nbsp;·&nbsp; Valinhos, interior de São Paulo &nbsp;·&nbsp; Para maiores de 18 anos</p>
+  </div>
+  <div class="cue" aria-hidden="true"></div>
+</header>
+
+<main>
+<section id="audicao">
+  <div class="center">
+    <p class="overline">Audição</p>
+    <h2 class="dark-title">A narração</h2>
+    <p class="note">O conto integral em áudio · voz Solemn Narrator</p>
+    <div class="player reveal" id="player">
+      <button class="pp" id="pp" type="button" aria-label="Reproduzir"></button>
+      <div class="mid">
+        <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="track" id="track"><div class="rail"></div><div class="fill" id="fill"><span class="knob"></span></div></div>
+      </div>
+      <div class="time"><span id="tcur">0:00</span><span class="tsep"> / </span><span id="tdur">–:––</span></div>
+    </div>
+    <p class="hint">Recomendado com fones de ouvido</p>
+  </div>
+  <audio id="narracao" preload="metadata" src="data:audio/mpeg;base64,SUQzBAA
